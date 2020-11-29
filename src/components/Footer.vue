@@ -14,9 +14,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .text{
     text-align: center;
+    color: rgba(#ffffff, 0.8);
 }
 footer{
     line-height: 50px;

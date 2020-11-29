@@ -1,10 +1,15 @@
 <template>
     <div>
         <div class="page-title">
-            Код игры:
+            Подключиться к игре
         </div>
         <form @submit.prevent="">
             <div class="input-group">
+                <label>Имя или никнейм</label>
+                <input type="text">
+            </div>
+            <div class="input-group">
+                <label>Код игры:</label>
                 <input type="text">
             </div>
             <div class="buttons">
@@ -21,31 +26,17 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-input{
-    width: 100%;
-    height: 30px;
-    background-color: rgba(#000, 0);
-    border: 0;
-    border-bottom: 1px solid rgba(#fff, 0.9);
-    color: #ffffff;
-    padding: 0;
-    &:focus{
-        outline: none;
-    }
-}
+<style lang="scss">
+
+
+
 .buttons{
     display: flex;
     padding: 15px 0;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    .button{
+        width: 45%;
+    }
 }
-.button{
-    color: #ffffff;
-    background-color: #232E3C;
-    padding: 10px 15px;
-    font-weight: 400;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 15px;
-}
+
 </style>

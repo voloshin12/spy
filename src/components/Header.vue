@@ -48,6 +48,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 .header-item{
     width: 33.3%;

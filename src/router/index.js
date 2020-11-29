@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
+import id from '@/views/Create/id';
 
 Vue.use(VueRouter);
 
@@ -13,7 +14,12 @@ const routes = [
     {
         path: '/create',
         name: 'Create',
-        component: () => import('../views/Create.vue'),
+        component: () => import('../views/Create/Create.vue'),
+    },
+    {
+        path: '/create/:id',
+        name: 'id',
+        component: id,
     },
     {
         path: '/connect',
