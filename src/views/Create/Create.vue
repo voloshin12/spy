@@ -16,7 +16,7 @@
                     <div class="btn-nav">
                         <button
                             type="button"
-                            @click="players === 3 ? players : players--"
+                            @click="players === 2 ? players : players--"
                         >
                             -1
                         </button>
@@ -67,11 +67,11 @@ export default {
         getSpies() {
             return this.spies;
         },
-        ...mapGetters(['LOCATION']),
+        ...mapGetters(['LOCATION', 'ROLE_RANDOM']),
     },
     watch: {
-        players: function (val) {
-            this.CHANGE_PLAYERS(val)
+        name () {
+            localStorage.setItem('nameGamer', this.name)
         }
     },
     methods: {
@@ -86,13 +86,30 @@ export default {
                 )}`;
                 await update(`/games/${response.id}`, {
                     slug: id,
-                    Players_name: [{ name: this.name }],
                     location: {
                         id: this.LOCATION,
                     },
                 });
                 this.CHANGE_CURRENT_GAME(id);
-                this.CHANGE_PLAYERS_ALL(this.players + this.spies);
+                this.CHANGE_PLAYERS_ALL({
+                    players: this.players,
+                    spies: this.spies,
+                });
+                const random_role = await update(`/games/${response.id}`, {
+                    poles_random: this.ROLE_RANDOM,
+                });
+                for (let i = 0; i < random_role.poles_random.length; i++) {
+
+                    if (!random_role.poles_random[i].name) {
+                        random_role.poles_random[i].name = this.name
+                        this.CHANGE_ROLE(random_role.poles_random[i].text)
+                        break;
+                    }
+
+                }
+                await update(`/games/${response.id}`, {
+                    poles_random: random_role.poles_random,
+                });
                 await this.$router.push(`create/${id}`);
             } catch (error) {
                 alert(error);
@@ -107,20 +124,19 @@ export default {
             'CHANGE_PLAYERS_ALL',
             'CHANGE_LOCATIONS',
             'CHANGE_PLAYERS',
-            'CHANGE_SPIES'
+            'CHANGE_SPIES',
+            'CHANGE_ROLE'
         ]),
     },
-    data: function () {
+    data: function() {
         return {
-            players: 3,
+            players: 2,
             spies: 1,
-            name: '',
-        }
+            name: localStorage.getItem('nameGamer'),
+        };
     },
     async mounted() {
         await this.getLocations();
-        this.CHANGE_PLAYERS(this.players)
-        this.CHANGE_SPIES(this.spies)
     },
 };
 </script>

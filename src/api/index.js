@@ -30,11 +30,12 @@ const update = async (endpoint, data) => {
         console.log(error);
     }
 };
-const get = async endpoint => {
+const get = async (endpoint, params) => {
     try {
         const response = await service.request({
             method: 'get',
             url: endpoint,
+            params,
         });
         return response.data;
     } catch (error) {

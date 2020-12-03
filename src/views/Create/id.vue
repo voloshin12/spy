@@ -6,6 +6,10 @@
         <div class="info">
             <div class="title-game">Код игры: <span v-text="CURRENT_GAME" /></div>
             Ожидание игроков
+            <div>
+                Ваша роль:
+                <div class="title-game" v-html="ROLE"/>
+            </div>
             <div class="title-game">
                 1 из {{PLAYERS_ALL}}
             </div>
@@ -21,7 +25,7 @@ import { mapGetters } from 'vuex';
 export default {
     name: 'id',
     computed: {
-        ...mapGetters(['CURRENT_GAME','PLAYERS_ALL']),
+        ...mapGetters(['CURRENT_GAME','PLAYERS_ALL','ROLE']),
     },
 };
 </script>
