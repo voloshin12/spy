@@ -5,16 +5,16 @@
       </div>
       <div class="button-links">
           <div class="button-wrap">
-              <router-link to="/create" class="button-link"> Создать игру </router-link>
+              <router-link to="/create" class="button-link" v-text="$t('message.create_a_game')"/>
           </div>
           <div class="button-wrap">
-              <router-link to="/connect" class="button-link"> Подключиться к игре </router-link>
+              <router-link to="/connect" class="button-link" v-text="$t('message.connect_to_the_game')"></router-link>
           </div>
           <div class="button-wrap">
-              <router-link to="/settings" class="button-link"> Настройки </router-link>
+              <router-link to="/settings" class="button-link" v-text="$t('message.settings')"/>
           </div>
           <div class="button-wrap">
-              <router-link to="/rules" class="button-link"> Правила </router-link>
+              <router-link to="/rules" class="button-link" v-text="$t('message.rules')"/>
           </div>
       </div>
 

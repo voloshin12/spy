@@ -4,7 +4,10 @@
             <div class="container">
                 <div class="header-wrap">
                     <div class="header-item">
-                        <router-link to="/" class="link-back" v-bind:class="{ hide: ButtonBackStatus }"
+                        <router-link
+                            to="/"
+                            class="link-back"
+                            v-bind:class="{ hide: ButtonBackStatus }"
                             ><img src="@/assets/arrow.svg"
                         /></router-link>
                     </div>
@@ -30,10 +33,10 @@ export default {
     computed: {
         ButtonBackStatus() {
             if (this.$route.path === '/') {
-                return true
+                return true;
             }
-        }
-    }
+        },
+    },
 };
 </script>
 
@@ -41,8 +44,8 @@ export default {
 header {
     height: 50px;
 }
-.hide{
-    display: none!important;
+.hide {
+    display: none !important;
 }
 .header-wrap {
     display: flex;
@@ -50,10 +53,10 @@ header {
     align-items: center;
     position: relative;
 }
-.header-item{
+.header-item {
     width: 33.3%;
 }
-.header-btn-dots{
+.header-btn-dots {
     display: flex;
     justify-content: flex-end;
 }
